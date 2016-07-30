@@ -10,12 +10,12 @@ class Serial {
 }
 
 class Node {
-  constructor(key, val) {
-    this.key = key;
-    this.val = val;
+  constructor() {
+    this.title = 'Untitled';
+    this.content = 'Poem here...';
     this.parent = null;
     this.children = [];
-  }
+  };
 
   addChild(child) {
     this.children.push(child);
@@ -25,52 +25,47 @@ class Node {
   setParent(parent) {
     this.parent = parent;
   }
-}
 
-class Instance extends Node {
-  createCloneChild(id) {
-    var child = new Instance(id, this.val);
+  createCloneChild() {
+    var child = new Node();
+    child.content = this.content;
+    child.title = this.title;
     this.addChild(child);
+  }
+
+  traverse(process) {
+    process(this);
+    for (var child of this.children) {
+      child.traverse(process);
+    }
   }
 }
 
 class Poetree {
   constructor() {
-    this.idSerial = new Serial();
-    this.poemRoots = [];
-    this.poems = {};
+    this.poems = [];
   }
 
   addPoem() {
-    var id = this.idSerial.getNext();
-    var poem = new Instance(id, 'abidin');
-    this.poemRoots.push(poem);
-    this.poems[poem.key] = "Title Here...";
+    var poemRoot = new Node();
+    this.poems.push(poemRoot);
   }
 }
 
-
+function print(x) {
+  console.log(x);
+}
 
 function test1() {
-  id = 1;
-  root = new Node(id, 'abidin');
-  id += 1;
-  child1 = new Node(id, root.val);
-  child1.val = 'abidinim';
-  root.addChild(child1);
+  poetree = new Poetree();
+  poetree.addPoem();
+  poem1 = poetree.poems[0];
+  poem1.content = "To be or not to be";
+  poem1.createCloneChild();
+  poem1_1 = poem1.children[0];
+
+  poetree.poems[0].traverse(print);
 }
 
-function test2() {
-  id = 1;
-  root = new Instance(id, 'abidin');
-  id += 1;
-  root.createCloneChild(id);
-  child1 = root.children[0];
-}
+test1();
 
-// test1();
-// test2();
-// console.log(root);
-
-var poetree = new Poetree();
-poetree.addPoem();
