@@ -11,8 +11,8 @@ class Serial {
 
 class Node {
     constructor() {
-        this.title = 'Untitled';
-        this.content = 'Poem here...';
+        this.title = "Untitled";
+        this.content = "Poem here...";
         this.parent = null;
         this.children = [];
     };
