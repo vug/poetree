@@ -37,6 +37,17 @@ class Node {
     process(this);
     for (var child of this.children) {
       child.traverse(process);
+
+    toJSON() {
+        var childrenJSON = [];
+        for (var child of this.children) {
+            childrenJSON.push(child.toJSON());
+        }
+        return {
+            title: this.title,
+            content: this.content,
+            children: childrenJSON
+        };
     }
   }
 }
