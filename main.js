@@ -93,5 +93,34 @@ function test1() {
     poetree.poems[0].traverse(print);
 }
 
-test1();
+function test2() {
+    works = [
+        {
+            title: "Title1",
+            content: "Content1",
+            createdAt: "Sun, 31 Jul 2016 22:51:00 GMT",
+            children: [
+                        {
+                            title: "Title1",
+                            content: "Content1_1",
+                            createdAt: "Sun, 31 Jul 2016 22:55:00 GMT",
+                            children: []
+                        },
+                        {
+                            title: "Title1",
+                            content: "Content1_2",
+                            createdAt: "Sun, 31 Jul 2016 22:56:00 GMT",
+                            children: []
+                        }
+            ]
+        }
+    ];
+
+    poem1 = works[0];
+    poem1Str = JSON.stringify(poem1);
+    console.log(Node.convertJSON2Node(JSON.parse(poem1Str)));
+}
+
+// test1();
+test2();
 
