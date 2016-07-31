@@ -53,6 +53,18 @@ class Node {
             children: childrenJSON,
         };
     }
+
+    static convertJSON2Node(json) {
+        var node = new Node();
+        node.title = json.title;
+        node.content = json.content;
+        node.createdAt = json.createdAt;
+        for (var child of json.children) {
+            var childNode = Node.convertJSON2Node(child);
+            node.addChild(childNode);
+        }
+        return node;
+    }
 }
 
 class Poetree {
