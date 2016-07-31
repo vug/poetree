@@ -49,7 +49,8 @@ class Node {
         return {
             title: this.title,
             content: this.content,
-            children: childrenJSON
+            createdAt: this.createdAt,
+            children: childrenJSON,
         };
     }
 }
