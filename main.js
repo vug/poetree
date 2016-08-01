@@ -112,6 +112,9 @@ class Node {
               levelSeparation: 150
             }
           },
+          interaction: {
+              hover: true
+          }
           // physics: {
           //   hierarchicalRepulsion: {
           //     nodeDistance: 200
