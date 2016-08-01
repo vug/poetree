@@ -86,23 +86,16 @@ class Node {
                 visEdges.push({from: node.parent.id, to: node.id});
             }
         });
-        console.log(visNodes);
-        console.log(visEdges);
 
-        // create an array with nodes
         var nodes = new vis.DataSet(visNodes);
-
-        // create an array with edges
         var edges = new vis.DataSet(visEdges);
-
-        // create a network
         var container = document.getElementById('poemnetwork');
 
-        // provide the data in the vis format
         var data = {
             nodes: nodes,
             edges: edges
         };
+
         var options = {
           manipulation: false,
           //height: '100%',
