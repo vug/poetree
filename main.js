@@ -263,6 +263,18 @@ function test2() {
         var idx = parseInt(selectPoem.value);
         poetree.visualizeTree(poetree.poems[idx]);
     });
+
+    var inputFile = document.getElementById("inputUploadFile");
+    inputFile.addEventListener("change", handleFiles, false);
+    function handleFiles() {
+        var fileList = this.files;
+        /* now you can work with the file list */
+        var reader = new FileReader();
+        reader.onload = function () {
+            var fileContent = reader.result;
+        };
+        reader.readAsText(fileList[0]);
+    }
 }
 
 // test1();
