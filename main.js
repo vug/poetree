@@ -175,6 +175,11 @@ class Poetree {
             layout: {
                 hierarchical: {
                     enabled: true,
+                    /* "directed" or "hubsize"
+                    docs: hubsize: The node with the most connections (the largest hub) is drawn at the top of the tree.
+                    direction: The direction method is based on the direction of the edges.
+                     */
+                    sortMethod: "directed",
                     levelSeparation: 150
                 }
             },
