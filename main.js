@@ -127,6 +127,9 @@ class Poetree {
             var selectedNode = selectedPoemRoot.findId(selectedPoemId);
             selectedNode.title = title;
             selectedNode.content = content;
+
+            this.visualizeTree(selectedPoemRoot);
+            this.network.selectNodes([selectedPoemId]);
         };
     }
 
