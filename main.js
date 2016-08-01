@@ -89,17 +89,17 @@ class Poetree {
         }
 
         var selectPoem = document.getElementById("selectPoemList");
-        for (var idx = 0; idx < poetree.poems.length; idx++) {
-            var poem = poetree.poems[idx];
+        for (var idx = 0; idx < this.poems.length; idx++) {
+            var poem = this.poems[idx];
             var option = document.createElement('option');
             option.value = idx;
             option.innerHTML = poem.title;
             selectPoem.appendChild(option);
         }
 
-        selectPoem.addEventListener("change", function (event) {
+        selectPoem.addEventListener("change", event => {
             var idx = parseInt(selectPoem.value);
-            poetree.visualizeTree(poetree.poems[idx]);
+            this.visualizeTree(this.poems[idx]);
         });
     }
 
