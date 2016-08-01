@@ -164,6 +164,7 @@ class Poetree {
                 }
             });
             if (selectedNode) {
+                var textArea = document.getElementById('texteditor');
                 textArea.value = selectedNode.title + "\n\n" + selectedNode.content;
             }
         });
