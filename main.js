@@ -186,7 +186,6 @@ class Poetree {
             // }
         };
 
-        // initialize your network!
         this.network = new vis.Network(container, data, options);
 
         this.network.on('click', function (properties) {
@@ -218,7 +217,6 @@ function main() {
     var buttonSave = document.getElementById("buttonSaveFile");
     buttonSave.addEventListener("click", function() {
         var jsonString = JSON.stringify(poetree.poems);
-        //console.log(jsonString);
         download(jsonString, "works.json", "text/plain");
     });
 
