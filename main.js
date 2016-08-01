@@ -124,6 +124,19 @@ class Node {
 
         // initialize your network!
         var network = new vis.Network(container, data, options);
+
+        network.on('click', function(properties) {
+            var selectedNodeId = properties.nodes;
+            var selectedNode = null;
+            root.traverse(function(node) {
+                if (node.id == selectedNodeId) {
+                    selectedNode = node;
+                }
+            });
+            if (selectedNode) {
+                textArea.value = selectedNode.title + "\n\n" + selectedNode.content;
+            }
+        });
     }
 }
 
