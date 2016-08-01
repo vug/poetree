@@ -88,6 +88,12 @@ class Poetree {
         this.poems.push(poemRoot);
     }
 
+    getSelectedPoemIdx() {
+        var selectPoem = document.getElementById("selectPoemList");
+        var idx = parseInt(selectPoem.value);
+        return idx;
+    }
+
     loadWorksJSON(worksJson) {
         this.poems = [];
         for (var poemJson of worksJson) {
@@ -106,7 +112,7 @@ class Poetree {
         }
 
         selectPoem.addEventListener("change", event => {
-            var idx = parseInt(selectPoem.value);
+            var idx = this.getSelectedPoemIdx();
             this.visualizeTree(this.poems[idx]);
             var textArea = document.getElementById('texteditor');
             textArea.value = "";
@@ -120,7 +126,7 @@ class Poetree {
             var title = textSplitted[0];
             var content = textSplitted.slice(2).join("\n");
 
-            var idx = parseInt(selectPoem.value);
+            var idx = this.getSelectedPoemIdx();
             var selectedPoemRoot = this.poems[idx];
             var selectedNode = selectedPoemRoot.findId(selectedPoemId);
 
