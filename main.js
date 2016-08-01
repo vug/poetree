@@ -67,11 +67,34 @@ class Node {
     }
 
     visualize() {
+
+    }
+}
+
+class Poetree {
+    constructor() {
+        this.poems = [];
+    }
+
+    addPoem() {
+        var poemRoot = new Node();
+        this.poems.push(poemRoot);
+    }
+
+    loadWorksJSON(worksJson) {
+        this.poems = [];
+        for (var poemJson of worksJson) {
+            var poemRootNode = Node.convertJSON2Node(poemJson);
+            this.poems.push(poemRootNode);
+        }
+    }
+
+    visualizeTree(poem) {
         var id = 1;
         var visNodes = [];
         var visEdges = [];
 
-        this.traverse(function(node) {
+        poem.traverse(function(node) {
             node.id = id;
             visNodes.push({
                 id: id,
@@ -121,7 +144,7 @@ class Node {
         network.on('click', function(properties) {
             var selectedNodeId = properties.nodes;
             var selectedNode = null;
-            root.traverse(function(node) {
+            poem.traverse(function(node) {
                 if (node.id == selectedNodeId) {
                     selectedNode = node;
                 }
@@ -130,17 +153,6 @@ class Node {
                 textArea.value = selectedNode.title + "\n\n" + selectedNode.content;
             }
         });
-    }
-}
-
-class Poetree {
-    constructor() {
-        this.poems = [];
-    }
-
-    addPoem() {
-        var poemRoot = new Node();
-        this.poems.push(poemRoot);
     }
 }
 
@@ -228,9 +240,13 @@ function test2() {
     poem1 = works[0];
     poem1Str = JSON.stringify(poem1);
     root = Node.convertJSON2Node(JSON.parse(poem1Str));
-    root.visualize();
+
     textArea = document.getElementById('texteditor');
     console.log(root);
+
+    poetree = new Poetree();
+    poetree.loadWorksJSON(works);
+    poetree.visualizeTree(poetree.poems[1]);
 }
 
 // test1();
