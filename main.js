@@ -94,7 +94,7 @@ class Poetree {
         var visNodes = [];
         var visEdges = [];
 
-        poem.traverse(function(node) {
+        poem.traverse(function (node) {
             node.id = id;
             visNodes.push({
                 id: id,
@@ -103,7 +103,7 @@ class Poetree {
                 color: {background: 'white'}, // hover (?)
                 labelHighlightBold: false,
                 font: {size: 10, face: 'monospace', align: 'left'}
-                });
+            });
             id += 1;
             if (node.parent != null) {
                 visEdges.push({from: node.parent.id, to: node.id});
@@ -120,31 +120,31 @@ class Poetree {
         };
 
         var options = {
-          manipulation: false,
-          //height: '100%',
-          layout: {
-            hierarchical: {
-              enabled: true,
-              levelSeparation: 150
+            manipulation: false,
+            //height: '100%',
+            layout: {
+                hierarchical: {
+                    enabled: true,
+                    levelSeparation: 150
+                }
+            },
+            interaction: {
+                hover: true
             }
-          },
-          interaction: {
-              hover: true
-          }
-          // physics: {
-          //   hierarchicalRepulsion: {
-          //     nodeDistance: 200
-          //   }
-          // }
+            // physics: {
+            //   hierarchicalRepulsion: {
+            //     nodeDistance: 200
+            //   }
+            // }
         };
 
         // initialize your network!
         var network = new vis.Network(container, data, options);
 
-        network.on('click', function(properties) {
+        network.on('click', function (properties) {
             var selectedNodeId = properties.nodes;
             var selectedNode = null;
-            poem.traverse(function(node) {
+            poem.traverse(function (node) {
                 if (node.id == selectedNodeId) {
                     selectedNode = node;
                 }
@@ -164,7 +164,7 @@ function test1() {
     poem1.createCloneChild();
     poem1_1 = poem1.children[0];
 
-    var print = function(x) {
+    var print = function (x) {
         console.log(x);
     };
     poetree.poems[0].traverse(print);
@@ -177,24 +177,24 @@ function test2() {
             content: "Some flowers are red,\nSome are violet,\nSugar is sweet,\nAnd so are you.",
             createdAt: "Sun, 31 Jul 2016 22:51:00 GMT",
             children: [
+                {
+                    title: "Flowers Are Red",
+                    content: "Roses are red,\nViolets are violet,\nSugar is sweet,\nAnd so are you.",
+                    createdAt: "Sun, 31 Jul 2016 22:55:00 GMT",
+                    children: [
                         {
-                            title: "Flowers Are Red",
-                            content: "Roses are red,\nViolets are violet,\nSugar is sweet,\nAnd so are you.",
+                            title: "Roses Are Red",
+                            content: "Roses are red,\nViolets are blue,\nSugar is sweet,\nAnd so are you.",
                             createdAt: "Sun, 31 Jul 2016 22:55:00 GMT",
-                            children: [
-                                {
-                                    title: "Roses Are Red",
-                                    content: "Roses are red,\nViolets are blue,\nSugar is sweet,\nAnd so are you.",
-                                    createdAt: "Sun, 31 Jul 2016 22:55:00 GMT",
-                                    children: []
-                                }]
-                        },
-                        {
-                            title: "Flowers Are Colored",
-                            content: "Some flowers are red,\nSome are violet,\nSugar is sweet,\nAnd so are you.",
-                            createdAt: "Sun, 31 Jul 2016 22:56:00 GMT",
                             children: []
-                        }
+                        }]
+                },
+                {
+                    title: "Flowers Are Colored",
+                    content: "Some flowers are red,\nSome are violet,\nSugar is sweet,\nAnd so are you.",
+                    createdAt: "Sun, 31 Jul 2016 22:56:00 GMT",
+                    children: []
+                }
             ]
         },
         {
@@ -259,7 +259,7 @@ function test2() {
         selectPoem.appendChild(option);
     }
 
-    selectPoem.addEventListener("change", function(event) {
+    selectPoem.addEventListener("change", function (event) {
         var idx = parseInt(selectPoem.value);
         poetree.visualizeTree(poetree.poems[idx]);
     });
