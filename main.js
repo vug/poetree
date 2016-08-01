@@ -113,6 +113,20 @@ class Poetree {
             var idx = parseInt(selectPoem.value);
             this.visualizeTree(this.poems[idx]);
         });
+
+        var textArea = document.getElementById('texteditor');
+        textArea.onkeyup = e => {
+            var selectedPoemId = this.network.getSelectedNodes()[0];
+            var text = textArea.value;
+            var textSplitted = text.split("\n\n");
+            var title = textSplitted[0];
+            var content = textSplitted[1];
+
+            var idx = parseInt(selectPoem.value);
+            var selectedNode = this.poems[idx].findId(selectedPoemId);
+            selectedNode.title = title;
+            selectedNode.content = content;
+        };
     }
 
     visualizeTree(poem) {
