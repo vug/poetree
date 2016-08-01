@@ -214,6 +214,17 @@ function download(text, name, type) {
     a.click();
 }
 
+function cloneSelected() {
+    var root = poetree.poems[poetree.getSelectedPoemIdx()];
+    if (!poetree.network) return;
+    var id = poetree.network.getSelectedNodes()[0];
+    var node = root.findId(id);
+    if (node) {
+        node.createCloneChild();
+        poetree.visualizeTree(root);
+    }
+}
+
 function main() {
     poetree = new Poetree();
 
