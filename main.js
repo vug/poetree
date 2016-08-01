@@ -125,11 +125,13 @@ class Poetree {
             var idx = parseInt(selectPoem.value);
             var selectedPoemRoot = this.poems[idx];
             var selectedNode = selectedPoemRoot.findId(selectedPoemId);
-            selectedNode.title = title;
-            selectedNode.content = content;
 
-            this.visualizeTree(selectedPoemRoot);
-            this.network.selectNodes([selectedPoemId]);
+            if (selectedNode) {
+                selectedNode.title = title;
+                selectedNode.content = content;
+                this.visualizeTree(selectedPoemRoot);
+                this.network.selectNodes([selectedPoemId]);
+            }
         };
     }
 
