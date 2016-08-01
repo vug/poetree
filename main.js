@@ -144,10 +144,6 @@ class Poetree {
     }
 }
 
-function print(x) {
-    console.log(x);
-}
-
 function test1() {
     poetree = new Poetree();
     poetree.addPoem();
@@ -156,6 +152,9 @@ function test1() {
     poem1.createCloneChild();
     poem1_1 = poem1.children[0];
 
+    var print = function(x) {
+        console.log(x);
+    };
     poetree.poems[0].traverse(print);
 }
 
