@@ -200,20 +200,6 @@ class Poetree {
     }
 }
 
-function test1() {
-    poetree = new Poetree();
-    poetree.addPoem();
-    poem1 = poetree.poems[0];
-    poem1.content = "To be or not to be";
-    poem1.createCloneChild();
-    poem1_1 = poem1.children[0];
-
-    var print = function (x) {
-        console.log(x);
-    };
-    poetree.poems[0].traverse(print);
-}
-
 function download(text, name, type) {
     var a = document.createElement("a");
     var file = new Blob([text], {type: type});
@@ -249,5 +235,4 @@ function main() {
     }
 }
 
-// test1();
 main();
