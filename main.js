@@ -251,7 +251,8 @@ function main() {
         download(jsonString, "works.json", "text/plain");
     });
 
-
+    var buttonClone = document.getElementById("buttonCloneInstance");
+    buttonClone.addEventListener("click", cloneSelected);
 }
 
 main();
