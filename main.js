@@ -215,7 +215,7 @@ function download(text, name, type) {
 }
 
 function main() {
-    var poetree = new Poetree();
+    poetree = new Poetree();
 
     // UI
     var inputFile = document.getElementById("inputUploadFile");
