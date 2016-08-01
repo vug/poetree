@@ -112,6 +112,8 @@ class Poetree {
         selectPoem.addEventListener("change", event => {
             var idx = parseInt(selectPoem.value);
             this.visualizeTree(this.poems[idx]);
+            var textArea = document.getElementById('texteditor');
+            textArea.value = "";
         });
 
         var textArea = document.getElementById('texteditor');
