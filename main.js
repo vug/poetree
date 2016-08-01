@@ -87,6 +87,20 @@ class Poetree {
             var poemRootNode = Node.convertJSON2Node(poemJson);
             this.poems.push(poemRootNode);
         }
+
+        var selectPoem = document.getElementById("selectPoemList");
+        for (var idx = 0; idx < poetree.poems.length; idx++) {
+            var poem = poetree.poems[idx];
+            var option = document.createElement('option');
+            option.value = idx;
+            option.innerHTML = poem.title;
+            selectPoem.appendChild(option);
+        }
+
+        selectPoem.addEventListener("change", function (event) {
+            var idx = parseInt(selectPoem.value);
+            poetree.visualizeTree(poetree.poems[idx]);
+        });
     }
 
     visualizeTree(poem) {
@@ -249,20 +263,6 @@ function test2() {
     poetree.visualizeTree(poetree.poems[0]);
 
     // UI
-    selectPoem = document.getElementById("selectPoemList");
-    //for (var poem of poetree.poems) {
-    for (var idx = 0; idx < poetree.poems.length; idx++) {
-        var poem = poetree.poems[idx];
-        var option = document.createElement('option');
-        option.value = idx;
-        option.innerHTML = poem.title;
-        selectPoem.appendChild(option);
-    }
-
-    selectPoem.addEventListener("change", function (event) {
-        var idx = parseInt(selectPoem.value);
-        poetree.visualizeTree(poetree.poems[idx]);
-    });
 
     var inputFile = document.getElementById("inputUploadFile");
     inputFile.addEventListener("change", handleFiles, false);
