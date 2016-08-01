@@ -190,9 +190,11 @@ class Poetree {
             var textArea = document.getElementById('texteditor');
             if (selectedNode) {
                 textArea.value = selectedNode.title + "\n\n" + selectedNode.content;
+                textArea.disabled = selectedNode.children.length > 0;
             }
             else {
                 textArea.value = "";
+                textArea.disabled = true;
             }
         });
     }
