@@ -84,6 +84,7 @@ class Node {
 class Poetree {
     constructor() {
         this.poems = [];
+        this.network = null;
     }
 
     addPoem() {
@@ -163,9 +164,9 @@ class Poetree {
         };
 
         // initialize your network!
-        var network = new vis.Network(container, data, options);
+        this.network = new vis.Network(container, data, options);
 
-        network.on('click', function (properties) {
+        this.network.on('click', function (properties) {
             var selectedNodeId = properties.nodes;
             var selectedNode = poem.findId(selectedNodeId);
             if (selectedNode) {
