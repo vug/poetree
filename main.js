@@ -184,14 +184,27 @@ function test1() {
     poetree.poems[0].traverse(print);
 }
 
+function download(text, name, type) {
+    var a = document.createElement("a");
+    var file = new Blob([text], {type: type});
+    a.href = URL.createObjectURL(file);
+    a.download = name;
+    a.click();
+}
+
 function main() {
     var poetree = new Poetree();
 
     // UI
-    var textArea = document.getElementById('texteditor');
-
     var inputFile = document.getElementById("inputUploadFile");
     inputFile.addEventListener("change", handleFiles, false);
+    
+    var buttonSave = document.getElementById("buttonSaveFile");
+    buttonSave.addEventListener("click", function() {
+        var jsonString = JSON.stringify(poetree.poems);
+        //console.log(jsonString);
+        download(jsonString, "works.json", "text/plain");
+    });
 
     function handleFiles() {
         var fileList = this.files;
