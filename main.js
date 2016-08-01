@@ -123,7 +123,8 @@ class Poetree {
             var content = textSplitted.slice(2).join("\n");
 
             var idx = parseInt(selectPoem.value);
-            var selectedNode = this.poems[idx].findId(selectedPoemId);
+            var selectedPoemRoot = this.poems[idx];
+            var selectedNode = selectedPoemRoot.findId(selectedPoemId);
             selectedNode.title = title;
             selectedNode.content = content;
         };
