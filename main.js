@@ -184,32 +184,28 @@ function test1() {
     poetree.poems[0].traverse(print);
 }
 
-function test2() {
-    poem1Str = JSON.stringify(poem1);
-    root = Node.convertJSON2Node(JSON.parse(poem1Str));
-
-    textArea = document.getElementById('texteditor');
-    console.log(root);
-
-    poetree = new Poetree();
-    poetree.loadWorksJSON(works);
-    poetree.visualizeTree(poetree.poems[0]);
+function main() {
+    var poetree = new Poetree();
 
     // UI
+    var textArea = document.getElementById('texteditor');
 
     var inputFile = document.getElementById("inputUploadFile");
     inputFile.addEventListener("change", handleFiles, false);
+
     function handleFiles() {
         var fileList = this.files;
-        /* now you can work with the file list */
         var reader = new FileReader();
         reader.onload = function () {
             var fileContent = reader.result;
+            var works = JSON.parse(fileContent);
+            poetree.loadWorksJSON(works);
+            poetree.visualizeTree(poetree.poems[0]);
         };
         reader.readAsText(fileList[0]);
     }
 }
 
 // test1();
-test2();
+main();
 
