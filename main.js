@@ -75,10 +75,6 @@ class Node {
         }
         return node;
     }
-
-    visualize() {
-
-    }
 }
 
 class Poetree {
@@ -215,15 +211,7 @@ function main() {
 
     // UI
     var inputFile = document.getElementById("inputUploadFile");
-    inputFile.addEventListener("change", handleFiles, false);
-    
-    var buttonSave = document.getElementById("buttonSaveFile");
-    buttonSave.addEventListener("click", function() {
-        var jsonString = JSON.stringify(poetree.poems);
-        download(jsonString, "works.json", "text/plain");
-    });
-
-    function handleFiles() {
+    var handleFiles = function () {
         var fileList = this.files;
         var reader = new FileReader();
         reader.onload = function () {
@@ -235,7 +223,16 @@ function main() {
         if (fileList.length > 0) {
             reader.readAsText(fileList[0]);
         }
-    }
+    };
+    inputFile.addEventListener("change", handleFiles, false);
+
+    var buttonSave = document.getElementById("buttonSaveFile");
+    buttonSave.addEventListener("click", function() {
+        var jsonString = JSON.stringify(poetree.poems);
+        download(jsonString, "works.json", "text/plain");
+    });
+
+
 }
 
 main();
