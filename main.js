@@ -186,6 +186,7 @@ function test2() {
     poem1Str = JSON.stringify(poem1);
     root = Node.convertJSON2Node(JSON.parse(poem1Str));
     root.visualize();
+    textArea = document.getElementById('texteditor');
     console.log(root);
 }
 
