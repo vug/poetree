@@ -246,7 +246,7 @@ function test2() {
 
     poetree = new Poetree();
     poetree.loadWorksJSON(works);
-    poetree.visualizeTree(poetree.poems[1]);
+    poetree.visualizeTree(poetree.poems[0]);
 }
 
 // test1();
