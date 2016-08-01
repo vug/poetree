@@ -191,9 +191,12 @@ class Poetree {
         this.network.on('click', function (properties) {
             var selectedNodeId = properties.nodes;
             var selectedNode = poem.findId(selectedNodeId);
+            var textArea = document.getElementById('texteditor');
             if (selectedNode) {
-                var textArea = document.getElementById('texteditor');
                 textArea.value = selectedNode.title + "\n\n" + selectedNode.content;
+            }
+            else {
+                textArea.value = "";
             }
         });
     }
@@ -229,7 +232,9 @@ function main() {
             poetree.loadWorksJSON(works);
             poetree.visualizeTree(poetree.poems[0]);
         };
-        reader.readAsText(fileList[0]);
+        if (fileList.length > 0) {
+            reader.readAsText(fileList[0]);
+        }
     }
 }
 
