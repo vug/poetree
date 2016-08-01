@@ -124,7 +124,8 @@ function test2() {
 
     poem1 = works[0];
     poem1Str = JSON.stringify(poem1);
-    console.log(Node.convertJSON2Node(JSON.parse(poem1Str)));
+    root = Node.convertJSON2Node(JSON.parse(poem1Str));
+    console.log(root);
 }
 
 // test1();
