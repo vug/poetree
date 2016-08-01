@@ -41,6 +41,16 @@ class Node {
         }
     }
 
+    findId(id) {
+        var nodeWithId = null;
+        this.traverse(function (node) {
+            if (node.id == id) {
+                nodeWithId = node;
+            }
+        });
+        return nodeWithId;
+    }
+
     toJSON() {
         var childrenJSON = [];
         for (var child of this.children) {
@@ -157,12 +167,7 @@ class Poetree {
 
         network.on('click', function (properties) {
             var selectedNodeId = properties.nodes;
-            var selectedNode = null;
-            poem.traverse(function (node) {
-                if (node.id == selectedNodeId) {
-                    selectedNode = node;
-                }
-            });
+            var selectedNode = poem.findId(selectedNodeId);
             if (selectedNode) {
                 var textArea = document.getElementById('texteditor');
                 textArea.value = selectedNode.title + "\n\n" + selectedNode.content;
