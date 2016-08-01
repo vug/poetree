@@ -118,9 +118,9 @@ class Poetree {
         textArea.onkeyup = e => {
             var selectedPoemId = this.network.getSelectedNodes()[0];
             var text = textArea.value;
-            var textSplitted = text.split("\n\n");
+            var textSplitted = text.split("\n");
             var title = textSplitted[0];
-            var content = textSplitted[1];
+            var content = textSplitted.slice(2).join("\n");
 
             var idx = parseInt(selectPoem.value);
             var selectedNode = this.poems[idx].findId(selectedPoemId);
