@@ -100,6 +100,7 @@ class Poetree {
         }
 
         var selectPoem = document.getElementById("selectPoemList");
+        selectPoem.innerHTML = "";
         for (var idx = 0; idx < this.poems.length; idx++) {
             var poem = this.poems[idx];
             var option = document.createElement('option');
