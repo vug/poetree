@@ -65,6 +65,63 @@ class Node {
         }
         return node;
     }
+
+    visualize() {
+        var id = 1;
+        var visNodes = [];
+        var visEdges = [];
+
+        this.traverse(function(node) {
+            node.id = id;
+            visNodes.push({
+                id: id,
+                label: node.title + "\n\n" + node.content,
+                shape: 'box',
+                color: {background: 'white'}, // hover (?)
+                labelHighlightBold: false,
+                font: {size: 10, face: 'monospace', align: 'left'}
+                });
+            id += 1;
+            if (node.parent != null) {
+                visEdges.push({from: node.parent.id, to: node.id});
+            }
+        });
+        console.log(visNodes);
+        console.log(visEdges);
+
+        // create an array with nodes
+        var nodes = new vis.DataSet(visNodes);
+
+        // create an array with edges
+        var edges = new vis.DataSet(visEdges);
+
+        // create a network
+        var container = document.getElementById('poemnetwork');
+
+        // provide the data in the vis format
+        var data = {
+            nodes: nodes,
+            edges: edges
+        };
+        var options = {
+          manipulation: false,
+          //height: '100%',
+          layout: {
+            hierarchical: {
+              enabled: true,
+              levelSeparation: 150
+            }
+          },
+          // physics: {
+          //   hierarchicalRepulsion: {
+          //     nodeDistance: 200
+          //   }
+          // }
+        };
+
+        // initialize your network!
+        var network = new vis.Network(container, data, options);
+    }
 }
 
 class Poetree {
@@ -125,6 +182,7 @@ function test2() {
     poem1 = works[0];
     poem1Str = JSON.stringify(poem1);
     root = Node.convertJSON2Node(JSON.parse(poem1Str));
+    root.visualize();
     console.log(root);
 }
 
