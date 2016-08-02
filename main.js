@@ -101,16 +101,9 @@ class Poetree {
             this.poems.push(poemRootNode);
         }
 
-        var selectPoem = document.getElementById("selectPoemList");
-        selectPoem.innerHTML = "";
-        for (var idx = 0; idx < this.poems.length; idx++) {
-            var poem = this.poems[idx];
-            var option = document.createElement('option');
-            option.value = idx;
-            option.innerHTML = poem.title;
-            selectPoem.appendChild(option);
-        }
+        this.populateSelectPoem();
 
+        var selectPoem = document.getElementById("selectPoemList");
         selectPoem.addEventListener("change", event => {
             var idx = this.getSelectedPoemIdx();
             this.visualizeTree(this.poems[idx]);
@@ -137,6 +130,19 @@ class Poetree {
                 this.network.selectNodes([selectedPoemId]);
             }
         };
+    }
+
+    populateSelectPoem() {
+        var selectPoem = document.getElementById("selectPoemList");
+        selectPoem.innerHTML = "";
+        for (var idx = 0; idx < this.poems.length; idx++) {
+            var poem = this.poems[idx];
+            var option = document.createElement('option');
+            option.value = idx;
+            option.innerHTML = poem.title;
+            selectPoem.appendChild(option);
+        }
+        return selectPoem;
     }
 
     visualizeTree(poem) {
