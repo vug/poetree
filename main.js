@@ -208,6 +208,17 @@ class Poetree {
             if (selectedNode) {
                 textArea.value = selectedNode.title + "\n\n" + selectedNode.content;
                 textArea.disabled = selectedNode.children.length > 0;
+
+                if (selectedNode.parent != null) {
+                    var parent = selectedNode.parent;
+                    var d = new diff();
+                    var textDiff = d.main(parent.content, selectedNode.content);
+                    d.cleanupSemantic(textDiff);
+                    var html = d.prettyHtml(textDiff);
+                    var diffDiv = document.getElementById("diff");
+                    diffDiv.innerHTML = html;
+                    // console.log(html);
+                }
             }
             else {
                 textArea.value = "";
