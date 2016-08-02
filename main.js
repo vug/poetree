@@ -94,6 +94,14 @@ class Poetree {
         return idx;
     }
 
+    getSelectedNode() {
+        var selectedPoemId = this.network.getSelectedNodes()[0];
+        var idx = this.getSelectedPoemIdx();
+        var selectedPoemRoot = this.poems[idx];
+        var selectedNode = selectedPoemRoot.findId(selectedPoemId);
+        return selectedNode;
+    }
+
     loadWorksJSON(worksJson) {
         this.poems = [];
         for (var poemJson of worksJson) {
