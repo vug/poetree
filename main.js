@@ -212,12 +212,13 @@ class Poetree {
                 if (selectedNode.parent != null) {
                     var parent = selectedNode.parent;
                     var d = new diff();
-                    var textDiff = d.main(parent.content, selectedNode.content);
-                    d.cleanupSemantic(textDiff);
-                    var html = d.prettyHtml(textDiff);
+                    var oldText = parent.title + "\n\n" + parent.content;
+                    var newText = selectedNode.title + "\n\n" + selectedNode.content;
+                    var textDiff2 = d.main(oldText, newText);
+                    d.cleanupSemantic(textDiff2);
+                    var html = d.prettyHtml(textDiff2);
                     var diffDiv = document.getElementById("diff");
                     diffDiv.innerHTML = html;
-                    // console.log(html);
                 }
             }
             else {
