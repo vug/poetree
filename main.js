@@ -290,6 +290,27 @@ function main() {
 
     var buttonClone = document.getElementById("buttonCloneInstance");
     buttonClone.addEventListener("click", cloneSelected);
+
+    var buttonDelete = document.getElementById("buttonDeleteInstance");
+    buttonDelete.addEventListener("click", function() {
+        var node = poetree.getSelectedNode();
+
+        if (node && confirm("Do you want to delete selected instance?")) {
+            if (node.parent) {
+                var index = node.parent.children.indexOf(node);
+                if (index > -1) {
+                    node.parent.children.splice(index, 1);
+                }
+            }
+            else {
+
+                poetree.poems[idx] = [];
+            }
+            var idx = poetree.getSelectedPoemIdx();
+            var selectedPoemRoot = poetree.poems[idx];
+            poetree.visualizeTree(selectedPoemRoot);
+        }
+    });
 }
 
 main();
