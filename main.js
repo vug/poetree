@@ -191,12 +191,12 @@ class Poetree {
             },
             interaction: {
                 hover: true
+            }, 
+            physics: {
+              hierarchicalRepulsion: {
+                nodeDistance: 200
+              }
             }
-            // physics: {
-            //   hierarchicalRepulsion: {
-            //     nodeDistance: 200
-            //   }
-            // }
         };
 
         this.network = new vis.Network(container, data, options);
