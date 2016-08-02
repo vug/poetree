@@ -256,6 +256,12 @@ function main() {
     };
     inputFile.addEventListener("change", handleFiles, false);
 
+    var buttonNewPoem = document.getElementById("buttonNewPoem");
+    buttonNewPoem.addEventListener("click", function() {
+        poetree.addPoem();
+        poetree.populateSelectPoem();
+    });
+
     var buttonSave = document.getElementById("buttonSaveFile");
     buttonSave.addEventListener("click", function() {
         var jsonString = JSON.stringify(poetree.poems);
