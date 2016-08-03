@@ -311,6 +311,20 @@ function main() {
             poetree.visualizeTree(selectedPoemRoot);
         }
     });
+
+    var buttonHelp = document.getElementById("buttonHelp");
+    buttonHelp.addEventListener("click", function() {
+        alert('1) Click on "Choose File".\n' +
+            '2) Load a "complete works" file (there is an "example_works.json")\n' +
+            '3) Choose a poem using selection menu\n' +
+            '4) Select poem instance by clicking on the nodes of tree diagram on the left\n' +
+            '5) Edit selected instance using the text editor on the right\n' +
+            '(only nodes with no children are allowed to be edited)\n' +
+            '6) Click on "Clone Instance" to create a child node with the same content of the selected node\n' +
+            '7) Click on "New Poem" to start a new poem\n' +
+            '8) Click on "Save" to save current state of "complete works"\n' +
+            '9) Can zoom and pan at the tree diagram area via mouse/touch pad.\n');
+    });
 }
 
 main();
